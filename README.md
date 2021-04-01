@@ -19,7 +19,7 @@
 	Возвращаемое значение:
 		Количество байт для работы.
 		
-bool ClearEEPROMBlock(unsigned short start_byte, unsigned short count)
+	bool ClearEEPROMBlock(unsigned short start_byte, unsigned short count)
 	Описание:
 		Заполняет значением 0 ячейки данных EEPROM. Используется для частичной или полной очистки EEPROM.
 	Параметры:
