@@ -1,4 +1,3 @@
-# ArduinoIDE_SE_EEPROM
 The library is designed to work with EEPROM. All data is stored in 3 instances to enable automatic recovery in case of partial damage.
 The library has functions for reading/writing single bytes and rows with a maximum length of 32 characters.
 The size of data reserved for operation must not exceed the maximum EEPROM size of the controller divided by 3. The library functionality does not provide for size control of the protected unit.
@@ -27,13 +26,13 @@ This library uses Arduino.h and EEPROM.h libraries.
 	Возвращаемое значение:
 		Количество байт для работы.
 		
-	void ClearEEPROMBlock(unsigned short start_index, unsigned short count)
-	Описание:
-		Заполняет значением 0 ячейки данных EEPROM. Используется для частичной или полной очистки EEPROM.
-	Параметры:
-    		start_index - начальный байт для очистки. Значение должны варьироваться в диапазоне от 0 до значения возвращаемого GetEEPROMSize()-1.
-    		count - количество байт для очистки.
-    		Важно учитывать чтоб start_byte+count были меньше GetEEPROMSize()-1
+  void ClearEEPROMBlock(unsigned short start_index, unsigned short count)
+  Описание:
+    Заполняет значением 0 ячейки данных EEPROM. Используется для частичной или полной очистки EEPROM.
+  Параметры:
+    start_index - начальный байт для очистки. Значение должны варьироваться в диапазоне от 0 до значения возвращаемого GetEEPROMSize()-1.
+    count - количество байт для очистки.
+    Важно учитывать чтоб start_byte+count были меньше GetEEPROMSize()-1
 		
 	void EEPROMfix()
 	Описание:
