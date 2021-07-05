@@ -11,7 +11,7 @@ SE_EEPROM::SE_EEPROM()
     Устанавка количества байт с которыми в дальнейшем будут работать все функции класса.
   Параметры:
     byte_count долно быть числом кратным 32 и не первышать максимальный размер EEPROM разделенный на 3.
-    Функция зарезервиек блок памяти в 3 раза превышающий byte_count.
+    Функция резервирует блок памяти в 3 раза превышающий byte_count.
   Возвращаемое значение:
     Количество байт для работы.
 */    
@@ -21,7 +21,6 @@ unsigned short SE_EEPROM::SetEEPROMSize(unsigned short byte_count)
   tmp=byte_count/32;
   tmp=tmp*32;
   eeprom_size=tmp;
-  Serial.println();
   return tmp;
 };
 
@@ -83,7 +82,7 @@ void SE_EEPROM::EEPROMfix()
     if ((res_0==res_1) && (res_1==res_2)) continue;
     if (res_0==res_1) {EEPROM.write(i*3+2,res_0); continue;}
     if (res_0==res_2) {EEPROM.write(i*3+1,res_0);continue;}
-    if (res_1==res_2) {EEPROM.write(i*3+2,res_1);continue;}
+    if (res_1==res_2) {EEPROM.write(i*3,res_1);continue;}
     // Если все 3 значения разные
     EEPROM.write(i*3,0);
     EEPROM.write(i*3+1,0);
@@ -156,7 +155,7 @@ String SE_EEPROM::ReadEEPROMStr32(unsigned short start_index)
 	for (i=0;i<32;i++)
 	{
 		if (start_index+i>=eeprom_size) break;
-    ch=ReadEEPROMByte(i);
+    ch=ReadEEPROMByte(start_index+i);
     if (ch!=0)
       res=res+ch;
     else
