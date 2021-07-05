@@ -8,17 +8,17 @@ This library uses Arduino.h and EEPROM.h libraries.
 */
 
 #include <se_eeprom.h>
-SE_EEPROM my_eeprom;
-	
+
 void setup() 
 {
   unsigned short i;
+  SE_EEPROM my_eeprom;
   unsigned short eeprom_size=256;
   unsigned char ver=1;
   bool res_b; 
   Serial.begin(9600);
   //Задаем классу размер EEPROM
-  my_eeprom.SetEEPROMSize(256);
+  my_eeprom.SetEEPROMSize(eeprom_size);
   
   Serial.print("Setting the EEPROM memory size for the library: ");
   Serial.println(my_eeprom.GetEEPROMSize());
